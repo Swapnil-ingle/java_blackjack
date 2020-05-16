@@ -12,13 +12,13 @@ class MainClass {
 }
 
 class BlackJackGame {
-	private Dealer dealer;
+	private Player dealer;
 
-	private Player player;
+	private Player human;
 
 	public BlackJack() {
 		this.dealer = new Dealer();
-		this.player = new Player();
+		this.human = new Human();
 	}
 
 	public void play() {
@@ -53,7 +53,7 @@ static class Deck {
 	public int drawCard(); // This will draw a random card with values from 2-11
 }
 
-class Dealer {
+class Player {
 	private int[] cards;
 
 	private int total;
@@ -65,15 +65,11 @@ class Dealer {
 	private void handCards(int[] cards) {...}; // Should take card coming from Deck; update cards, total and isBust value
 }
 
-class Player {
-	private int[] cards;
+class Dealer extends Player {
+	private String askNextMove() {...}; // Validate to be "Hit" or "Stay"
+}
 
-	private int total;
-
-	private boolean isBust;
-
+class Human extends Player {
 	private String askNextMove() {...}; // Should be "Hit" or "Stay"
-
-	private void handCards(int[] cards) {...}; // Should take card coming from Deck; update cards, total and isBust value
 }
 ```
