@@ -22,7 +22,7 @@ public class BlackJackGame {
 
 	public void play() {
         
-		System.out.println();
+	System.out.println();
         System.out.println(BLACK_JACK_BANNER);
         System.out.println("Welcome To BLACKJACK Game!");
         System.out.println();
@@ -163,6 +163,7 @@ public class BlackJackGame {
 			}
 		}
 	}
+	
 	private void playAgain() {
 		
 		System.out.println("Do you want to play again? \"Yes\" & \"No\" :");
@@ -186,7 +187,8 @@ public class BlackJackGame {
 		
 		}
 	} 
-     public static final String BLACK_JACK_BANNER =
+     
+	public static final String BLACK_JACK_BANNER =
         "###########################################################################################################################\n" +
         "#                                                                                                                         #\n" +
         "#   #######      #             #########       ########   #     ###             #    ########       #######   #     ###   #\n" +
