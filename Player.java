@@ -11,7 +11,7 @@ public class Player {
 
 	private int total;
 
-	public boolean isBust;
+	private boolean isBust;
 
 	public Player() {
 
