@@ -5,40 +5,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-
 	private Scanner scanner = new Scanner(new InputStreamReader(System.in));
-	private List<Integer> cards;
+	private List<Integer> cards = new ArrayList<Integer>();;
+	private int total = 0;
+	private boolean isBust = false;
 
-	private int total;
-
-	private boolean isBust;
-
-	public Player() {
-
-		this.cards = new ArrayList<Integer>();
-		this.total = 0;
-		this.isBust = false;
-
-	}
-
-	// Validate to be "Hit" or "Stay"
 	public String askNextMove() {
-
 		// Filter
 		if (this.isBust) {
-
 			return "stay";
-
 		}
 
-		// string to be return with player's response
 		String inputString = "";
 
-		// Loop will iterate until player is not enter valid input
 		while (true) {
-
 			System.out.println("\nWould you like to \"hit\" or \"stay\"?");
-
 			inputString = scanner.next();
 
 			if (inputString.equalsIgnoreCase("stay") || inputString.equalsIgnoreCase("hit")) {
@@ -51,28 +32,18 @@ public class Player {
 		return inputString;
 	}
 
-	// Should take card coming from Deck; update cards, total and isBust value
 	public void handCards(List<Integer> newCards) {
-
-		// Adding new cards coming from Deck to players cards
-		this.cards.addAll(newCards);
-
-		// variable to store new total
 		int newTotal = 0;
 
-		// Calculating the total of the cards
-		for (int card : this.cards) {
-
+		for (int card : newCards) {
 			newTotal = newTotal + card;
-
 		}
 
-		// replacing old total with new one
-		this.total = newTotal;
+		total = total + newTotal;
+		cards.addAll(newCards);
 
-		// Setting the isBust value
 		if (this.total > 21) {
-			this.isBust = true;
+			isBust = true;
 		}
 	}
 
