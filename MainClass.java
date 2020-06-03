@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class MainClass {
 
     public static void main(String arg[]) {
@@ -12,3 +13,13 @@ class MainClass {
     }
 }
 
+||||||| merged common ancestors
+=======
+class MainClass {
+    public static void main(String arg[]) {
+		BlackJackGame game = new BlackJackGame();
+		game.play();
+    }
+}
+
+>>>>>>> DRIVER_BLACKJACK_IMPL
