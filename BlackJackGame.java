@@ -90,7 +90,7 @@ public class BlackJackGame {
 	}
 
 	private String resolvePlayerName(Player player) {
-		return player instanceof Human ? "Player" : "Dealer";
+		return player instanceof Human ? "You" : "Dealer";
 	}
 
 	private void playAgain() {
