@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -26,7 +26,7 @@ public class BlackJackGame {
 
 		System.out.println("\nOkay Dealer's Turn!!! ");
 
-		int hiddenCard = dealer.getCards().get(1);
+		Card hiddenCard = dealer.getCards().get(1);
 		System.out.println("\nHis hidden card was : " + hiddenCard);
 		System.out.println("His Total is : " + dealer.getTotal());
 
@@ -70,13 +70,14 @@ public class BlackJackGame {
 		
 
 	private void initialDraw() {
-		List<Integer> humanCards = Deck.drawCards(2);
+		Deck deck = new Deck();
+		List<Card> humanCards = deck.drawCards(2);
 
 		human.handCards(humanCards);
 		System.out.println("\nYou got a " + humanCards.get(0) + " and a " + humanCards.get(1));
 		System.out.println("Your total is : " + human.getTotal());
 
-		List<Integer> dealerCards = Deck.drawCards(2);
+		List<Card> dealerCards = deck.drawCards(2);
 
 		dealer.handCards(dealerCards);
 		System.out.println("\nThe dealer has a " + dealerCards.get(0) + " showing, and a hidden card.");
@@ -87,10 +88,11 @@ public class BlackJackGame {
 		String playerName = resolvePlayerName(player);
 
 		while (!player.isBust()) {
+			Deck deck = new Deck();
 			if (player.askNextMove().equalsIgnoreCase("hit")) {
 				System.out.println("\n" + playerName + " choose to HIT!");
 
-				int card = Deck.drawCard();
+				Card card = deck.drawCard();
 				System.out.println("\n" + playerName + " Drew: " + card);
 
 				player.handCards(Collections.singletonList(card));
