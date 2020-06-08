@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Player {
 	private Scanner scanner = new Scanner(new InputStreamReader(System.in));
-	private List<Integer> cards = new ArrayList<Integer>();
+	private List<Card> cards = new ArrayList<Card>();
 	private int playerInitialAmount = 1000;
 	private int bettingAmount = 0;
 	private int total = 0;
@@ -33,11 +33,11 @@ public class Player {
 		return inputString;
 	}
 
-	public void handCards(List<Integer> newCards) {
+	public void handCards(List<Card> newCards) {
 		int newTotal = 0;
 
-		for (int card : newCards) {
-			newTotal = newTotal + card;
+		for (Card card : newCards) {
+			newTotal = newTotal + card.getValue();
 		}
 
 		total = total + newTotal;
@@ -48,11 +48,11 @@ public class Player {
 		}
 	}
 
-	public List<Integer> getCards() {
+	public List<Card> getCards() {
 		return cards;
 	}
 
-	public void setCards(List<Integer> cards) {
+	public void setCards(List<Card> cards) {
 		this.cards = cards;
 	}
 

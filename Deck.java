@@ -3,20 +3,31 @@ import java.util.List;
 import java.util.Random;
 
 public class Deck {
-	private static int min = 2;
-	private static int max = 11;
-	private static Random rand = new Random();
-
+	private List<Card> cardSet = new ArrayList<Card>();
+	private Random rand = new Random();
+	
+	public Deck() {
+		CardSuitEnumes suits[] = CardSuitEnumes.values();
+		for(CardSuitEnumes suit : suits) {
+			for(int cardValue = 1 ; cardValue <= 14 ; cardValue++) {
+				cardSet.add(new Card(cardValue, suit));
+			}
+		}
+	}
+	
 	// This will draw a random card with values from 2-11
-	public static int drawCard() {
-		return rand.nextInt((max - min) + 1) + min;
+	public Card drawCard() {
+		int randomIndex = rand.nextInt(cardSet.size()-1);
+		Card card = cardSet.get(randomIndex);
+		cardSet.remove(card);
+		return card;
 	}
 
-	public static List<Integer> drawCards(int n) {
-		List<Integer> cards = new ArrayList<Integer>();
+	public List<Card> drawCards(int n) {
+		List<Card> cards = new ArrayList<Card>();
 
 		for (int i = 0; i < n; i++) {
-			cards.add(rand.nextInt((max - min) + 1) + min);
+			cards.add(drawCard());
 		}
 
 		return cards;
