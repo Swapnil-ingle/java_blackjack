@@ -2,6 +2,7 @@
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class BlackJackGame {
 	private Scanner scanner = new Scanner(System.in);
@@ -55,15 +56,22 @@ public class BlackJackGame {
 	}
 
 	private void inputBettingAmount() { 
-		int bettingAmount = 0;
 		System.out.println("\nYou initially got Rupees for Betting \u20B9: " + human.getInitialAmount());
-		System.out.println("\nPlease Enter Your Amount for Betting (Min \u20B9 10 - Max \u20B9 1000) \u20B9: ");
-		bettingAmount = scanner.nextInt();
+			int bettingAmount = 0;
+			System.out.println("\nPlease Enter Your Amount for Betting (Min \u20B9 10 - Max \u20B9 1000) \u20B9: ");
+			try{
+				bettingAmount = scanner.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("\nPlease Enter Only Number!!!!!");
+				scanner.next();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		
 		if((bettingAmount < 10) || (bettingAmount > 1000)) {
-			System.out.println("\nYou input is wrong, Please try Again!!!");
+			System.out.println("\nYou input is wrong, Please try Again!!!!!");
 			this.inputBettingAmount();
-		} else {
+		} else { 
 			human.setBettingAmount(bettingAmount);
 		}
 	}
